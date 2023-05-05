@@ -1,0 +1,171 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://players.gd" type="Script" id=1]
+[ext_resource path="res://Game.gd" type="Script" id=2]
+[ext_resource path="res://ball.gd" type="Script" id=3]
+[ext_resource path="res://assets/685104__davejf__piano-loop.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/timesbi.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 544, 5.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 530, 5 )
+
+[sub_resource type="CircleShape2D" id=9]
+radius = 14.4222
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8, 45.375 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 8, 46.5 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 34
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="DynamicFont" id=12]
+size = 34
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 34
+font_data = ExtResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 16.5, 301 )
+
+[node name="Game" type="Node"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 32.0
+margin_top = 56.0
+margin_right = 997.0
+margin_bottom = 578.0
+color = Color( 0.0509804, 0.313726, 0.0352941, 1 )
+
+[node name="wall1" type="StaticBody2D" parent="."]
+position = Vector2( 0, 9 )
+
+[node name="ColorRect" type="ColorRect" parent="wall1"]
+margin_top = 47.0
+margin_right = 1023.0
+margin_bottom = 60.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall1"]
+position = Vector2( 513, 54.5 )
+shape = SubResource( 4 )
+
+[node name="wall2" type="StaticBody2D" parent="."]
+position = Vector2( -1, 25 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+position = Vector2( 494, 546 )
+shape = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="wall2"]
+margin_top = 541.0
+margin_right = 1026.0
+margin_bottom = 553.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ball" type="KinematicBody2D" parent="."]
+position = Vector2( 128, 166 )
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="ball"]
+margin_left = 375.0
+margin_top = 118.0
+margin_right = 396.0
+margin_bottom = 139.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball"]
+position = Vector2( 384, 128 )
+shape = SubResource( 9 )
+
+[node name="Player1" type="KinematicBody2D" parent="."]
+position = Vector2( 10, 105 )
+script = ExtResource( 1 )
+speed = 500
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+position = Vector2( 8, 201.625 )
+shape = SubResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="Player1"]
+margin_top = 156.0
+margin_right = 17.0
+margin_bottom = 248.0
+color = Color( 0.109804, 0.133333, 0.72549, 1 )
+
+[node name="Player2" type="KinematicBody2D" parent="."]
+position = Vector2( 27, -2 )
+script = ExtResource( 1 )
+player = 2
+speed = 500
+
+[node name="ColorRect" type="ColorRect" parent="Player2"]
+margin_left = 976.0
+margin_top = 264.0
+margin_right = 993.0
+margin_bottom = 357.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+position = Vector2( 984, 309.5 )
+shape = SubResource( 6 )
+
+[node name="red" type="Label" parent="."]
+margin_left = 526.0
+margin_top = 15.0
+margin_right = 577.0
+margin_bottom = 54.0
+custom_colors/font_color = Color( 0.0470588, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+custom_styles/normal = SubResource( 10 )
+text = "00"
+
+[node name="blue" type="Label" parent="."]
+margin_left = 448.0
+margin_top = 15.0
+margin_right = 499.0
+margin_bottom = 54.0
+custom_colors/font_color = Color( 0.0470588, 0.00392157, 0.00392157, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "00"
+align = 2
+
+[node name="distance" type="Label" parent="."]
+margin_left = 508.0
+margin_top = 13.0
+margin_right = 548.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 13 )
+text = ":"
+
+[node name="EdgeL" type="Area2D" parent="."]
+position = Vector2( 0, 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeL"]
+position = Vector2( -17, 299 )
+shape = SubResource( 8 )
+
+[node name="EdgeR" type="Area2D" parent="."]
+position = Vector2( 0, 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EdgeR"]
+position = Vector2( 1041.5, 300 )
+shape = SubResource( 8 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[connection signal="body_entered" from="EdgeL" to="." method="_on_EdgeL_body_entered"]
+[connection signal="body_entered" from="EdgeR" to="." method="_on_EdgeR_body_entered"]

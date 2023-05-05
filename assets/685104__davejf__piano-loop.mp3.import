@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/685104__davejf__piano-loop.mp3-5c3fa5e780de3300f9ea48053130cc86.mp3str"
+
+[deps]
+
+source_file="res://assets/685104__davejf__piano-loop.mp3"
+dest_files=[ "res://.import/685104__davejf__piano-loop.mp3-5c3fa5e780de3300f9ea48053130cc86.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
