@@ -1,8 +1,7 @@
 extends Node
 
-var red = 0
-var blue = 0
-
+var red = -2
+var blue = -1
 var max_score = 10
 
 func _on_EdgeL_body_entered(body):
@@ -22,7 +21,8 @@ func _on_EdgeR_body_entered(body):
 		get_tree().change_scene("res://Menu.tscn")
 
 func _process(delta):
-		$blue.text = str(blue)
 		$red.text = str(red)
+		$blue.text = str(blue)
+		
 	
 
